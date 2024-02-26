@@ -1,0 +1,19 @@
+{
+  "name": "@choreo/proxy",
+  "version": "1.0.0",
+  "main": "server.js",
+  "bin": {
+    "proxy": "server.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "bump-patch-version": "npm version patch",
+    "bump-minor-version": "npm version minors",
+    "bump-major-version": "npm version major"
+  },
+  "dependencies": {
+    "command-line-args": "^5.2.1",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6"
+  }
+}
