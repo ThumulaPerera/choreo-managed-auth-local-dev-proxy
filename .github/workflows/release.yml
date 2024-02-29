@@ -31,15 +31,28 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GIT_BOT_TOKEN }}
 
       - name: Use Node.js 18.x
         uses: actions/setup-node@v1
         with:
           node-version: '18.x'
+      
+      - name: Bump Version
+        run: |
+          git config --global user.email "version.bump@github.action.com"
+          git config --global user.name ${{ secrets.GIT_BOT_USERNAME }}
+          npm run bump-${{ github.event.inputs.Type }}-version
+          git push --follow-tags
 
-      - name: Publish Asgardeo Auth JS SDK
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Release
+        run: |
+          version=`git describe --tags --abbrev=0`
+          echo ${{secrets.GIT_BOT_TOKEN}} | gh auth login --with-token
+          gh release create $version
+
+      - name: Publish to NPM
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
           npm publish --access public
