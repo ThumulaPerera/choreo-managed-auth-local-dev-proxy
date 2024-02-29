@@ -16,4 +16,4 @@ npx @choreo/proxy -p <APP_PORT> -f <PROXY_PORT> -u <WEB_APP_URL>
 | -p           | --localAppPort | Port on which the web app runs locally.                                                                    | true     | N/A     |
 | -u           | --choreoAppUrl | The corresponding web app in choreo which the managed authentication related requests would be proxied to. | true     | N/A     |
 | -f           | --proxyPort    | Port on which the proxy will listen.                                                                       | false    | 10000   |
-| -l           | --logLevel     | Log level. One of ['debug', 'info', 'warn', 'error', 'silent']                                             | false    | silent  |
+| -l           | --logLevel     | Log level. One of ['info', 'debug']                                             | false    | info  |
