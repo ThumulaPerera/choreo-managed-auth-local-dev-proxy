@@ -1,6 +1,6 @@
 {
   "name": "@choreo/proxy",
-  "version": "0.0.2",
+  "version": "0.0.0",
   "main": "server.js",
   "bin": {
     "proxy": "server.js"
